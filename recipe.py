@@ -28,8 +28,7 @@ class Recipe:
 
     @classmethod
     def top_three(cls):
-        # only_reviewed = [rev for rev in cls.all() if len(Review.rating) > 0]
-        # print (only_reviewed)
+
         recipe_dict = {recipe : recipe.avg_rating() for recipe in cls.all() if recipe.avg_rating() != None}
         sorted_list = sorted(recipe_dict, key = recipe_dict.get, reverse = True)
         return sorted_list[0:3]
@@ -39,9 +38,6 @@ class Recipe:
         recipe_dict = {recipe : recipe.avg_rating() for recipe in cls.all() if recipe.avg_rating() != None}
         sorted_list = sorted(recipe_dict, key = recipe_dict.get)
         return sorted_list[0:3]
-    #     recipe_dict = {recipe : recipe.avg_rating() for recipe in cls.all() if recipe.avg_rating() != None
-    #     sorted_list = sorted(recipe_dict, key = recipe_dict.get)
-    #     return sorted_list[0:3]
 
     def top_five_reviews(self):
         return sorted(self.reviews(), key = lambda x: x.rating) [0:5]
